@@ -1,5 +1,5 @@
 assert = require 'insist'
-syllaparse = require '../index.js'
+syllaparse = require '../lib/index.js'
 fs = require 'fs'
 
 sample = fs.readFileSync __dirname + '/Lineages Syllabus.txt'
