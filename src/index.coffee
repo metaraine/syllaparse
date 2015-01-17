@@ -9,7 +9,7 @@ module.exports = (input)->
 	# find start token: Course Outline
 	matches = start.exec(input)
 	if not matches
-		throw new Error('Could not find start token of "Course Outline".')
+		throw new Error('Could not find start token: "Course Outline"')
 	input = input.slice(matches.index + matches[0].length)
 
 	input.replace(required, '')
