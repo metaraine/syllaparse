@@ -2,7 +2,17 @@ start = /^\s*Course Outline\s*$/m
 classTitle = /^(\d+\/\d+)\s+/m
 required = /^\s*(Required)|(Required readings)|(Readings)[:]?\s*$/i
 recommended = /^\s*Recommended[:]?\s*$/i
-authorYearTitle = /(.*)\s+\((\d\d\d\d)\)[.]?\s*(.*)/i
+authorYearTitle = ///
+	^ 					# start of line
+	(.*?) 			# AUTHOR
+	\s* 				# whitespace
+	\((\d{4})\)	# YEAR
+	\.?					# optional dot
+	\s* 				# whitespace
+	(.*) 				# TITLE
+	\s* 				# whitespace
+	$ 					# end of line
+///i
 
 module.exports = (input)->
 
@@ -24,12 +34,12 @@ module.exports = (input)->
 
 		# check for class title line
 		if matches = classTitle.exec(line)
-			classDate = matches[1].trim()
+			classDate = matches[1]
 		else if matches = authorYearTitle.exec(line)
 			reading =
-				author: matches[1].trim()
-				year: +matches[2].trim()
-				title: matches[3].trim()
+				author: matches[1]
+				year: +matches[2]
+				title: matches[3]
 				classDate: classDate
 
 			if recommended
