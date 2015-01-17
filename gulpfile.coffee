@@ -17,18 +17,15 @@ config =
 	scriptsSrc: 'src/**/*.coffee'
 	scriptsDest: 'lib'
 
-# compile client-side coffeescript, concat, & minify js
 gulp.task 'scripts', ->
 	gulp.src(config.scriptsSrc)
 		.pipe(coffee().on('error', gutil.log))
 		.pipe(gulp.dest(config.scriptsDest))
 
-# clean '.dist/'
 gulp.task 'clean', ->
 	gulp.src(['./lib'], read: false)
 	.pipe clean()
 
-# default task -- run 'gulp' from cli
 gulp.task 'default', (callback)->
 
 	runSequence 'clean', [
