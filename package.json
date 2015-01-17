@@ -1,0 +1,37 @@
+{
+  "name": "syllaparse",
+  "version": "0.0.0",
+  "description": "Parse readings from college syllabi.",
+  "license": "ISC",
+  "repository": "metaraine/syllaparse",
+  "author": {
+    "name": "Raine Lourie",
+    "email": "raine@collegecoding.com",
+    "url": "https://github.com/metaraine"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register",
+    "browser": "browserify -s $npm_package_name -o browser.js ."
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "college",
+    "syllabus",
+    "syllabi",
+    "parse",
+    "read",
+    "interpret",
+    "assignment"
+  ],
+  "devDependencies": {
+    "browserify": "^7.0.0",
+    "coffee-script": "^1.8.0",
+    "insist": "^0.2.3",
+    "mocha": "^2.0.1"
+  }
+}
