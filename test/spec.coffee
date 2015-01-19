@@ -46,3 +46,12 @@ describe 'syllaparse', ->
 			title: 'Mindfulness: What is it? What does it matter?'
 			recommended: true
 		])
+
+	it 'should parse readings that extend onto a second line that starts with a tab', ->
+		sample = readSample 'multiline-tab'
+		assert.deepEqual(syllaparse(sample), [
+			classDate: '1/19'
+			author: 'Freud, S.'
+			year: 2002
+			title: 'Advice to doctors on psychoanalytic treatment.'
+		])

@@ -40,5 +40,8 @@
     "insist": "^0.2.3",
     "mocha": "^2.1.0",
     "run-sequence": "^1.0.2"
+  },
+  "dependencies": {
+    "cint": "^8.1.0"
   }
 }

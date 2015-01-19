@@ -1,7 +1,9 @@
+cint = require 'cint'
+
 re =
-	blankline: /\s*\n\s*/
+	blankline: /^\s*$/
 	start: /^\s*Course Outline\s*$/m
-	classTitle: /^(\d+\/\d+)\s+/m
+	classTitle: /^(\d+\/\d+).*/m
 	required: /^\s*(?:Required)|(?:Required readings)|(?:Readings)[:]?\s*$/i
 	recommended: /^\s*Recommended[:]?\s*$/i
 	authorYearTitle: ///
@@ -11,7 +13,7 @@ re =
 		\((\d{4})\)	# YEAR
 		\.?					# optional dot
 		\s* 				# whitespace
-		(.*) 				# TITLE
+		(.*?) 			# TITLE (ungreedy to ignore following whitespace)
 		\s* 				# whitespace
 		$ 					# end of line
 	///i
@@ -24,7 +26,9 @@ module.exports = (input)->
 		throw new Error('Could not find start token: "Course Outline"')
 	input = input.slice(matches.index + matches[0].length)
 
-	input.replace(re.required, '')
+	input
+		.replace(re.blankline, '')
+		.replace(re.required, '')
 
 	# readingsList and procedural flags
 	readings = []
@@ -32,7 +36,9 @@ module.exports = (input)->
 	classDate = null
 
 	# begin reading line by line
-	for line in input.split(re.blankline)
+	for line in input.split('\n')
+
+		# console.log 'line', line
 
 		# check for class title line
 		if matches = re.classTitle.exec(line)
@@ -53,5 +59,8 @@ module.exports = (input)->
 				reading.recommended = true
 
 			readings.push reading
+		# check for multiline with tab
+		else if readings.length and line.indexOf('\t') is 0
+			cint.index(readings, -1).title += line.trim()
 
 	readings
