@@ -6,17 +6,8 @@ re =
 	classTitle: /^(\d+\/\d+).*/m
 	required: /^\s*(?:Required)|(?:Required readings)|(?:Readings)[:]?\s*$/i
 	recommended: /^\s*Recommended[:]?\s*$/i
-	authorYearTitle: ///
-		^ 					# start of line
-		(.*?) 			# AUTHOR
-		\s* 				# whitespace
-		\((\d{4})\)	# YEAR
-		\.?					# optional dot
-		\s* 				# whitespace
-		(.*?) 			# TITLE (ungreedy to ignore following whitespace)
-		\s* 				# whitespace
-		$ 					# end of line
-	///i
+	# regex101.com/r/bU5uP0/1
+	authorYearTitle: /^(.*?(?:\s\w\.|(?=\.)))[\s.]*\((\d{4})\)\.?\s*(.*?)\s*$/i
 
 module.exports = (input)->
 

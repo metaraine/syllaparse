@@ -16,7 +16,7 @@ describe 'syllaparse', ->
 			title: 'Conceptions of Psychopathology: A social constructional perspective. In J. E Maddux, & B. A. Winstead (Eds.), Psychopathology: Foundations for a contemporary understanding (pp. 3-22). NY, NY: Routledge.'
 		,
 			classDate: '1/19'
-			author: 'American Psychiatric Association.'
+			author: 'American Psychiatric Association'
 			year: 2013
 			title: 'Introduction. In Diagnostic and statistical manual of mental 	disorders (5th ed.)(pp. 5-17). Arlington, VA: American Psychiatric Publishing.'
 		])
@@ -30,7 +30,7 @@ describe 'syllaparse', ->
 			title: 'Conceptions of Psychopathology: A social constructional perspective.'
 		,
 			classDate: '1/19'
-			author: 'American Psychiatric Association.'
+			author: 'American Psychiatric Association'
 			year: 2013
 			title: 'Introduction.'
 		,
